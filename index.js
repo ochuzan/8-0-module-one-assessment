@@ -188,6 +188,7 @@ function filterByGenre(movies, genre) {
     remainder = split.join("").toLowerCase();
     return firstLetter + remainder;
   }
+
   let selectedGenre = [];
   for (let i = 0; i < movies.length; i++){
     if (movies[i].genre.includes(capitalize(genre))){
@@ -258,7 +259,27 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  if (!movies.length){
+    return null;
+  }
+
+  let biggestBoxOfficeMovie = movies[0];
+
+  for (let i = 0; i < movies.length; i++){
+    let boxOfficeStr = movies[i].boxOffice;
+    let boxOfficeStr2 = boxOfficeStr.split("$").pop();
+    let boxOfficeNum = Number(boxOfficeStr2.split(',').join(''));
+    movies[i].boxOfficeNum = boxOfficeNum;
+  }
+  
+  for (let i = 0; i < movies.length; i++){
+    if(movies[i].boxOfficeNum > biggestBoxOfficeMovie.boxOfficeNum){
+      biggestBoxOfficeMovie = movies[i];
+    }
+  }
+  return biggestBoxOfficeMovie.title;
+}
 
 // Do not change anything below this line.
 module.exports = {
