@@ -147,14 +147,12 @@ function findById(movies, id) {
     }
   }
 
-  if(Object.keys(movieObj).length === 0 && movieObj.constructor === Object){ // Google
+  if (movieObj.title === undefined){
     return null;
   } else {
     return movieObj;
   }
 }
-
-// console.log(findById(exampleMovies, 'tt0892769'));
 
 /**
  * filterByGenre()
