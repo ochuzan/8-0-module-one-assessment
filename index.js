@@ -177,7 +177,29 @@ function findById(movies, id) {
  *  //> []
  */
 function filterByGenre(movies, genre) {
-  
+  if (!movies.length){
+    return [];
+  }
+
+  function capitalize(text){
+    firstLetter = text[0].toUpperCase();
+    split = text.split("");
+    split.shift();
+    remainder = split.join("").toLowerCase();
+    return firstLetter + remainder;
+  }
+  let selectedGenre = [];
+  for (let i = 0; i < movies.length; i++){
+    if (movies[i].genre.includes(capitalize(genre))){
+      selectedGenre.push(movies[i]);
+    }
+  }
+
+  if (!selectedGenre.length){
+    return [];
+  } else {
+    return selectedGenre;
+  }
 }
 
 /**
