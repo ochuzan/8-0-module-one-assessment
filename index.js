@@ -271,9 +271,7 @@ function getBiggestBoxOfficeMovie(movies) {
     let boxOfficeStr2 = boxOfficeStr.split("$").pop();
     let boxOfficeNum = Number(boxOfficeStr2.split(',').join(''));
     movies[i].boxOfficeNum = boxOfficeNum;
-  }
-  
-  for (let i = 0; i < movies.length; i++){
+
     if(movies[i].boxOfficeNum > biggestBoxOfficeMovie.boxOfficeNum){
       biggestBoxOfficeMovie = movies[i];
     }
