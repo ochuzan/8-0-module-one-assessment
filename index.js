@@ -29,11 +29,7 @@ const exampleMovies = require("./movies");
     ];
  */
 function getAllMovieTitles(movies) {
-  if (!movies.length){
-    return [];
-  }
-
-  let movieTitles = [];
+  let movieTitles = []; // No need to add guard clause because it will return an empty array since default is empty and no movies will be pushed
 
   for (let i = 0; i < movies.length; i++){
     movieTitles.push(movies[i].title);
